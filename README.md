@@ -57,3 +57,14 @@ nohup java -server -Xms128m -Xmx128m -jar MybatisGenerator-1.0.0-SNAPSHOT.jar  >
 #### License
 Mybatis Generator UI is released under the [MIT License](https://github.com/lishuo9527/MybatisGenerator-UI/blob/master/LICENSE).
 
+
+#### GaryLee做的小笔记
+* 端口默认为6666,可在application.properties查看及修改
+* 操作步骤:
+```
+1.启动MybatisGeneratorApplication
+2.打开http://localhost:6666/
+3.输入各项参数(包名为文件夹名,可用.分隔子文件夹,如com.garylee.demo.domain)
+4.模型名称为实体类名(domain)
+5.生成,保存压缩文件(保存实体类和dao文件,默认名为mbg)
+```
