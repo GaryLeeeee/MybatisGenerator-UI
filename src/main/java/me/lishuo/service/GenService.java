@@ -81,11 +81,22 @@ public class GenService {
                     TableConfiguration tableConfiguration = new TableConfiguration(context);
                     tableConfiguration.setTableName(tableNames[i]);
                     tableConfiguration.setDomainObjectName(tableModels[i]);
-                    tableConfiguration.setCountByExampleStatementEnabled(false);
-                    tableConfiguration.setDeleteByExampleStatementEnabled(false);
-                    tableConfiguration.setSelectByExampleStatementEnabled(false);
-                    tableConfiguration.setUpdateByExampleStatementEnabled(false);
+                    /**
+                     * Updated by GaryLee 2018.7.13
+                     * 默认为false,则不会生成辅助类,即selectByExample等方法(如查询的多条件查询)
+                     * 同时"useActualColumnNames"属性由默认的false改为true
+                     */
+//                    tableConfiguration.setCountByExampleStatementEnabled(false);
+//                    tableConfiguration.setDeleteByExampleStatementEnabled(false);
+//                    tableConfiguration.setSelectByExampleStatementEnabled(false);
+//                    tableConfiguration.setUpdateByExampleStatementEnabled(false);
+//                    tableConfiguration.getProperties().setProperty("useActualColumnNames", "false");
                     tableConfiguration.getProperties().setProperty("useActualColumnNames", "false");
+                    /**
+                     * Updated by GaryLee 2018.7.13
+                     * 确保实体类对象通过mybatis增加到数据库后将id设置到当前对象上(否则为null)
+                     */
+                    tableConfiguration.setGeneratedKey(new GeneratedKey("id","JDBC",true,null));
                     tableConfigurations.add(tableConfiguration);
                 }
             }
